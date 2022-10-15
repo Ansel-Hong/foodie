@@ -17,7 +17,7 @@ function VideoPlayer() {
         ingredients={recipe.ingredients}
         username={recipe.userName}
         userpf={recipe.userPf} //? user profile picture
-        description={recipe.discription}/> //? i misspelled description in firebase
+        description={recipe.description}/> //? i misspelled description in firebase
     ));
     
   return (
