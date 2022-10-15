@@ -11,7 +11,8 @@ function VideoPlayer() {
     const curRecipe = recipeContext.curRecipe;;
 
     function changeCurRecipe(newRecipe){
-        recipeContext.changeRecipe(curRecipe);
+      // console.log(newRecipe);
+        recipeContext.changeRecipe((curRecipe+1 >= loadedRecipe.length ? 0 : curRecipe+1));
     }
 
        const recipesList = loadedRecipe.map((recipe) => (
