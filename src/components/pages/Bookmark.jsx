@@ -1,9 +1,5 @@
-let numberOfBookmarks = 10; // TODO: this is a hardcoded value. Should fetched from database?
-// const recipes = [];
-
 import RecipeList from "../store/recipe-context"
 import { useContext } from "react";
-
 
 function Bookmark() {
   const loadedRecipe = useContext(RecipeList).recipeList;
