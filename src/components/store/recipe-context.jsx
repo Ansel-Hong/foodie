@@ -12,8 +12,9 @@ export function RecipeListProvider(props) {
   const [curNum, setCurNum] = useState(0);
 
   function changeCurRecipe(newRecipe){
+    console.log(newRecipe)
     setCurNum((prevRecipeNum) => {
-        return (prevRecipeNum+1 >= loadedRecipe.length ? 0 : prevRecipeNum+1);
+        return newRecipe;
     })
   }
 
