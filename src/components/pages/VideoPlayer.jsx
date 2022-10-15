@@ -32,7 +32,7 @@ function VideoPlayer() {
     <section  onScroll={handleScroll}>
       {/* <h1 style={{margin: "5% 0 5% 5%"}} >Video Here</h1> */}
       <div>{recipesList[curRecipe]}</div>
-      <button onClick={handleScroll}>abc</button>
+      <button onClick={handleScroll}>Scroll next</button>
       <Add2Cart/>
     </section>
   );
