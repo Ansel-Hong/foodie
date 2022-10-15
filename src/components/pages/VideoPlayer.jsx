@@ -5,6 +5,8 @@ import RecipeVid from "../recipe_vid/RecipeVid";
 
 import RecipeList from "../store/recipe-context";
 
+import "../recipe_vid/RecipeVid.css"
+
 function VideoPlayer() {
     const recipeContext = useContext(RecipeList);
     const loadedRecipe = recipeContext.recipeList;
@@ -27,10 +29,10 @@ function VideoPlayer() {
     ));
     
   return (
-    <section>
-      {/* <h1 style={{margin: "5% 0 5% 5%"}} >Video Here</h1> */}
-      <div>{recipesList[curRecipe]}</div>
-      <button onClick={changeCurRecipe}>Next Vid</button>
+    <section className="player-wrapper">
+      <h1 style={{margin: "5% 0 5% 5%"}} >Video Here</h1>
+      <div onScroll={changeCurRecipe}>{recipesList[curRecipe]}</div>
+      <button className="button" onClick={changeCurRecipe}>Next Vid</button>
     </section>
   );
 }

@@ -6,7 +6,7 @@ function RecipeVid(props) {
   return (
     <section>
       {/* <h2>{props.recipename}</h2> */}
-      <div className="player-wrapper">
+      <div>
         <ReactPlayer 
           className="react-player"
           url={props.vid}

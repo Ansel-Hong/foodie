@@ -1,16 +1,24 @@
 .player-wrapper {
   width: auto; 
   height: auto; 
+  top: 70px;
+  position: relative;
 }
 .react-player {
   /* padding-top: 56.25%;  */
   width: 100px; 
   height: 100px; 
-  /* position: relative; */
+  /* bottom: 250px; */
+  position: relative;
+}
+
+.button {
+  position: relative;
 }
 
 .react-player > div {
-  width: 100px; 
+  /* width: 100px; 
   height: 100px; 
+  margin-bottom: 300px; */
   position: absolute;
 }
