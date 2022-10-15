@@ -6,27 +6,26 @@ import RecipeVid from "../recipe_vid/RecipeVid";
 import RecipeList from "../store/recipe-context";
 
 function VideoPlayer() {
-  const recipeContext = useContext(RecipeList);
-  const curRecipe = recipeContext.curRecipe;
-  const loadedRecipes = recipeContext.recipeList;
+    const recipeContext = useContext(RecipeList);
+    const loadedRecipe = recipeContext.recipeList;
+    const curRecipe = recipeContext.curRecipe;;
 
-  function changeCurRecipe(recipe){
-    recipeContext.changeRecipe(recipe);
-  }
+    function changeCurRecipe(newRecipe){
+        recipeContext.changeRecipe(curRecipe);
+    }
 
-  const recipesList = loadedRecipes.map((recipe) => (
-    <RecipeVid
-      id={recipe.id}
-      recipename={recipe.name}
-      vid={recipe.vid}
-      thumbnail={recipe.pic}
-      ingredients={recipe.ingredients}
-      username={recipe.userName}
-      userpf={recipe.userPf} //? user profile picture
-      description={recipe.discription}
-    /> //? i misspelled description in firebase
-  ));
-
+       const recipesList = loadedRecipe.map((recipe) => (
+      <RecipeVid
+        id={recipe.id}
+        recipename={recipe.name}
+        vid={recipe.vid}
+        thumbnail={recipe.pic}
+        ingredients={recipe.ingredients}
+        username={recipe.userName}
+        userpf={recipe.userPf} //? user profile picture
+        description={recipe.description}/> //? i misspelled description in firebase
+    ));
+    
   return (
     <section>
       <h1>Video Player</h1>

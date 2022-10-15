@@ -12,15 +12,15 @@ function Bookmark() {
             <img src={loadedRecipe[i].pic} style={{width: "100px", height: "100px",objectFit: "cover"}} /> {/* //? image of recipe */}
           </div>
               
-          <div  className="col-sm" style={{  width: "65%", marginLeft: '5%'}}>
+          <div  className="col-sm" style={{  width: "65%", marginLeft: '5%', paddingLeft: "5%"}}>
             <h2 style={{ fontSize: "125%" }}>{loadedRecipe[i].name}</h2> {/* //? name of recipe */}
-            <p style={{ fontSize: "80%" }}>{loadedRecipe[i].discription}</p> {/* //? small discription of the recipe */}
+            <p style={{ fontSize: "80%" }}>{loadedRecipe[i].description}</p> {/* //? small description of the recipe */}
           </div>
       </div>
     );
   }
   return <section>
-    <h1>Bookmark recipes</h1>
+    <h1 style={{margin: "5% 0 5% 5%"}} >Bookmark recipes</h1>
     {recipeList}
   </section>;
 }
