@@ -17,12 +17,12 @@ function VideoPlayer() {
         ingredients={recipe.ingredients}
         username={recipe.userName}
         userpf={recipe.userPf} //? user profile picture
-        description={recipe.discription}/> //? i misspelled description in firebase
+        description={recipe.description}/> //? i misspelled description in firebase
     ));
     
   return (
     <section>
-      <h1>Video Here</h1>
+      <h1 style={{margin: "5% 0 5% 5%"}} >Video Here</h1>
       <div>{ recipesList[0]
          }</div>
     </section>
