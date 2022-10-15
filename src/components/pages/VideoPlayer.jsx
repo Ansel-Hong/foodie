@@ -1,5 +1,5 @@
 import React from "react";
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useContext } from "react";
 import RecipeVid from "../recipe_vid/RecipeVid";
 
@@ -15,7 +15,7 @@ function VideoPlayer() {
         recipeContext.changeRecipe((curRecipe+1 >= loadedRecipe.length ? 0 : curRecipe+1));
     }
 
-       const recipesList = loadedRecipe.map((recipe) => (
+      const recipesList = loadedRecipe.map((recipe) => (
       <RecipeVid
         id={recipe.id}
         recipename={recipe.name}
@@ -31,7 +31,7 @@ function VideoPlayer() {
     <section>
       {/* <h1 style={{margin: "5% 0 5% 5%"}} >Video Here</h1> */}
       <div>{recipesList[curRecipe]}</div>
-      <button onClick={changeCurRecipe}>Next Vid</button>
+      <button onClick={changeCurRecipe} className="btn btn-dark" >Next Vid</button>
     </section>
   );
 }
