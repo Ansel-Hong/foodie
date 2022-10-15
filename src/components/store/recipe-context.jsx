@@ -47,17 +47,17 @@ export function RecipeListProvider(props) {
       });
   }
 
-  function unbookmarkCurRecipe() {
+  function unbookmarkCurRecipe(i) {
     console.log(
       "bookmarkCurRecipe",
       "https://htv7-96f00-default-rtdb.firebaseio.com/recipe/" +
-        loadedRecipe[curNum].id +
+        loadedRecipe[i].id +
         ".json"
     );
 
     fetch(
       "https://htv7-96f00-default-rtdb.firebaseio.com/recipe/" +
-        loadedRecipe[curNum].id +
+        loadedRecipe[i].id +
         ".json",
       {
         method: "PATCH",
