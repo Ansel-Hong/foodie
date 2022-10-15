@@ -9,11 +9,13 @@ function MainNavigation() {
 
   return (
     <div className="food-meter">
-        <div className="circle">
-          <h2 className="circle-text">{percentage}</h2>
-          <div className="box" style={liStyle}>
+      <Link to="/fridge">
+          <div className="circle">
+            <h2 className="circle-text">{percentage}</h2>
+            <div className="box" style={liStyle}>
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }
