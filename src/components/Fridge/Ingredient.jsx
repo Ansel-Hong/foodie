@@ -12,18 +12,20 @@ export default function Ingredient({ingredient, ingredientChecked}) {
     }
 
     const divStyle = {
-        paddingTop: "10px",
-        paddingLeft: "10px"
+        marginTop: "10px",
+        width: "300px"
     }
     return (
-        <div style = {divStyle}>
-        <label>
-            <input type="checkbox" checked={ingredient.complete} onChange={handleIngredientClicked}></input>
-            {ingredient.name}
-        </label>
-        <label style={amountStyle}>
-        x{ingredient.amount}
-        </label>
+        <div style = {divStyle} className="card">
+            <div className="input-group-text">
+            <label>
+                <input type="checkbox" checked={ingredient.complete} onChange={handleIngredientClicked}></input>
+                {" " +ingredient.name}
+            </label>
+            <label style={amountStyle}>
+                x{" " + ingredient.amount}
+            </label>
+            </div>
         </div>
     )
 }
