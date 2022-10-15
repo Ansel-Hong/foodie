@@ -4,9 +4,8 @@ import "./RecipeVid.css"
 
 function RecipeVid(props) {
   return (
-    <section>
-      {/* <h2>{props.recipename}</h2> */}
       <div className="player-wrapper">
+        {/* <div className="test">bg box</div> */}
         <ReactPlayer 
           className="react-player"
           url={props.vid}
@@ -24,7 +23,6 @@ function RecipeVid(props) {
           }}
         />
       </div>
-    </section>
   );
 }
 

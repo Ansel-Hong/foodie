@@ -1,7 +1,8 @@
 import React from "react";
 // import { useState, useEffect } from "react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import RecipeVid from "../recipe_vid/RecipeVid";
+import Add2Cart from "../recipe_vid/add2Cart";
 
 import RecipeList from "../store/recipe-context";
 
@@ -10,11 +11,12 @@ function VideoPlayer() {
     const loadedRecipe = recipeContext.recipeList;
     const curRecipe = recipeContext.curRecipe;;
 
-    function changeCurRecipe(newRecipe){
-        recipeContext.changeRecipe(curRecipe);
+    function handleScroll (){
+      console.log("scroolled");
+      recipeContext.changeRecipe(curRecipe);
     }
 
-       const recipesList = loadedRecipe.map((recipe) => (
+    const recipesList = loadedRecipe.map((recipe) => (
       <RecipeVid
         id={recipe.id}
         recipename={recipe.name}
@@ -27,10 +29,10 @@ function VideoPlayer() {
     ));
     
   return (
-    <section>
+    <section  onScroll={handleScroll}>
       {/* <h1 style={{margin: "5% 0 5% 5%"}} >Video Here</h1> */}
       <div>{recipesList[curRecipe]}</div>
-      <button onClick={changeCurRecipe}>Next Vid</button>
+      <Add2Cart/>
     </section>
   );
 }
