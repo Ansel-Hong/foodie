@@ -28,7 +28,7 @@ function VideoPlayer() {
     
   return (
     <section>
-      <h1>Video Player</h1>
+      <h1 style={{margin: "5% 0 5% 5%"}} >Video Here</h1>
       <div>{recipesList[curRecipe]}</div>
       <button onClick={changeCurRecipe}>Next Vid</button>
     </section>

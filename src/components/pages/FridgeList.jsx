@@ -1,14 +1,13 @@
-import {useState, useEffect, useRef} from 'react'
+import {useEffect, useRef} from 'react'
 import IngredientList from "../Fridge/IngredientList"
 import { v4 as uuidv4 } from 'uuid'
 
-function FridgeList() {
+function FridgeList({ingredients,setIngredients}) {
   const heading = {
     paddingTop: "20px",
     paddingLeft: "20px"
 }
   let id = 0
-  const [ingredients,setIngredients] = useState([])
   const ingredientNameRef = useRef()
   const localStorageKey = 'FridgeList.ingredients'
   const amountRef = useRef()
