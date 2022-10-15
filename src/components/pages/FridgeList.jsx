@@ -2,7 +2,7 @@ import {useEffect, useRef} from 'react'
 import IngredientList from "../Fridge/IngredientList"
 import { v4 as uuidv4 } from 'uuid'
 
-function FridgeList({ingredients,setIngredients}) {
+function FridgeList({ingredients, setIngredients, updatePerc}) {
   const heading = {
     paddingTop: "20px",
     paddingLeft: "20px"
@@ -17,7 +17,7 @@ function FridgeList({ingredients,setIngredients}) {
   }, [])
 
   useEffect(() => {
-    localStorage.setItem(localStorageKey, JSON.stringify(ingredients))
+    localStorage.setItem(localStorageKey, JSON.stringify(ingredients));
   }, [ingredients])
 
   function handleAddIngredient(e){
@@ -26,9 +26,13 @@ function FridgeList({ingredients,setIngredients}) {
     name = temp.substring(0,1) + name.substring(1,name.length)
     const amount = amountRef.current.value
     if (name === '' || amount == '') return
+    name = name[0].toUpperCase() + name.slice(1);
+    
+    updatePerc();
+
     for(const key in ingredients){
       if(name==ingredients[key].name){
-        ingredients[key].amount =  parseFloat(ingredients[key].amount) + parseFloat(amount)
+        ingredients[key].amount =  parseFloat(ingredients[key].amount) + parseFloat(amount);
         return setIngredients(prevIngredients => {
           return [...prevIngredients]
         })
