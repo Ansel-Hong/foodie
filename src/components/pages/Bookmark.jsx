@@ -2,7 +2,6 @@ import RecipeList from "../store/recipe-context"
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-
 function Bookmark() {
   const recipeContext = useContext(RecipeList);
   const loadedRecipe = useContext(RecipeList).recipeList;
@@ -24,6 +23,7 @@ function Bookmark() {
           <h2 style={{ fontSize: "125%" }}>{loadedRecipe[i].name}</h2> {/* //? name of recipe */}
           <p style={{ fontSize: "80%", fontFamily: 'Archivo', }} >{loadedRecipe[i].description}</p> {/* //? small description of the recipe */}
         </div>
+        <button onClick={() => unbookmark} className="btn btn-danger">Remove bookmark</button>
       </div>
     );
   }
