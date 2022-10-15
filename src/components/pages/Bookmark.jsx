@@ -7,8 +7,6 @@ function Bookmark() {
   const recipeContext = useContext(RecipeList);
   const loadedRecipe = useContext(RecipeList).recipeList;
 
-  const curRecipe = recipeContext.curRecipe;
-
   function changeCurRecipe(newRecipe) {
     recipeContext.changeRecipe(newRecipe);
   }
