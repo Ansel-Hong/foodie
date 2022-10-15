@@ -2,11 +2,20 @@ import { createContext, useState, useEffect } from 'react';
 
 const RecipeList = createContext({
   recipeList: [],
+  curRecipe: 0,
+  changeRecipe: (recipe) => {} 
 });
 
 export function RecipeListProvider(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [loadedRecipe, setLoadedRecipe] = useState([]);
+  const [curNum, setCurNum] = useState(0);
+
+  function changeCurRecipe(newRecipe){
+    setCurNum((prevRecipeNum) => {
+        return (prevRecipeNum+1 >= loadedRecipe.length ? 0 : prevRecipeNum+1);
+    })
+  }
 
   useEffect(() => {
     setIsLoading(true);
@@ -39,7 +48,9 @@ export function RecipeListProvider(props) {
   }
 
     const recipesList = {
-      recipeList: loadedRecipe
+      recipeList: loadedRecipe,
+      curRecipe: curNum,
+      changeRecipe: changeCurRecipe
     };
 
   return (

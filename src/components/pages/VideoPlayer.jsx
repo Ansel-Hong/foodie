@@ -3,28 +3,35 @@ import React from "react";
 import { useContext } from "react";
 import RecipeVid from "../recipe_vid/RecipeVid";
 
-import RecipeList from "../store/recipe-context"
+import RecipeList from "../store/recipe-context";
 
 function VideoPlayer() {
-    const loadedRecipe = useContext(RecipeList).recipeList;
+  const recipeContext = useContext(RecipeList);
+  const curRecipe = recipeContext.curRecipe;
+  const loadedRecipes = recipeContext.recipeList;
 
-       const recipesList = loadedRecipe.map((recipe) => (
-      <RecipeVid
-        id={recipe.id}
-        recipename={recipe.name}
-        vid={recipe.vid}
-        thumbnail={recipe.pic}
-        ingredients={recipe.ingredients}
-        username={recipe.userName}
-        userpf={recipe.userPf} //? user profile picture
-        description={recipe.discription}/> //? i misspelled description in firebase
-    ));
-    
+  function changeCurRecipe(recipe){
+    recipeContext.changeRecipe(recipe);
+  }
+
+  const recipesList = loadedRecipes.map((recipe) => (
+    <RecipeVid
+      id={recipe.id}
+      recipename={recipe.name}
+      vid={recipe.vid}
+      thumbnail={recipe.pic}
+      ingredients={recipe.ingredients}
+      username={recipe.userName}
+      userpf={recipe.userPf} //? user profile picture
+      description={recipe.discription}
+    /> //? i misspelled description in firebase
+  ));
+
   return (
     <section>
-      <h1>Video Here</h1>
-      <div>{ recipesList[0]
-         }</div>
+      <h1>Video Player</h1>
+      <div>{recipesList[curRecipe]}</div>
+      <button onClick={changeCurRecipe}>Next Vid</button>
     </section>
   );
 }
