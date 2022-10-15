@@ -12,7 +12,7 @@ function Bookmark() {
             <img src={loadedRecipe[i].pic} style={{width: "100px", height: "100px",objectFit: "cover"}} /> {/* //? image of recipe */}
           </div>
               
-          <div  className="col-sm" style={{  width: "65%", marginLeft: '5%'}}>
+          <div  className="col-sm" style={{  width: "65%", marginLeft: '5%', paddingLeft: "5%"}}>
             <h2 style={{ fontSize: "125%" }}>{loadedRecipe[i].name}</h2> {/* //? name of recipe */}
             <p style={{ fontSize: "80%" }}>{loadedRecipe[i].discription}</p> {/* //? small discription of the recipe */}
           </div>
