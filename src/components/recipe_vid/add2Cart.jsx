@@ -1,12 +1,17 @@
-import { useState } from 'react'
+// import { useState } from 'react'
+import { useContext, useEffect } from "react";
+import RecipeList from "../store/recipe-context";
 
 import "./RecipeVid.css"
 
 function Add2Cart({}) {
+  const recipeContext = useContext(RecipeList);
+
   const liStyle = {height : "%"};
 
   function handleClick (){
     console.log("clicked");
+    recipeContext.bookmarkRecipe();
   }
 
   return (
