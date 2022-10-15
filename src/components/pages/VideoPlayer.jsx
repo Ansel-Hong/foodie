@@ -13,7 +13,7 @@ function VideoPlayer() {
 
     function handleScroll (){
       console.log("scroolled");
-      recipeContext.changeRecipe(curRecipe);
+      recipeContext.changeRecipe((curRecipe+1 >= loadedRecipe.length ? 0 : curRecipe+1));
     }
 
     const recipesList = loadedRecipe.map((recipe) => (
@@ -32,6 +32,7 @@ function VideoPlayer() {
     <section  onScroll={handleScroll}>
       {/* <h1 style={{margin: "5% 0 5% 5%"}} >Video Here</h1> */}
       <div>{recipesList[curRecipe]}</div>
+      <button onClick={handleScroll}>abc</button>
       <Add2Cart/>
     </section>
   );

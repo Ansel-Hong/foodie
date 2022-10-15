@@ -15,6 +15,8 @@ var items = [
 
 
 function Cart() {
+
+
     return <section>
       <h1 style={{margin: "5% 0 5% 5%"}} >Cart</h1>
       <ItemList items={items}/>
