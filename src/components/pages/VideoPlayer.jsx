@@ -16,11 +16,10 @@ function VideoPlayer() {
         thumbnail={recipe.pic}
         ingredients={recipe.ingredients}
         username={recipe.userName}
-        userpf={recipe.userPf}
-        isbookmarked={recipe.isBookmarked}
-      />
+        userpf={recipe.userPf} //? user profile picture
+        description={recipe.discription}/> //? i misspelled description in firebase
     ));
-
+    
   return (
     <section>
       <h1>Video Here</h1>
