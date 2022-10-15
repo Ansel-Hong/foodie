@@ -17,9 +17,8 @@ export default function Ingredient({ingredient, ingredientChecked}) {
     }
     return (
         <div style = {divStyle} className="card">
-            <div className="input-group-text">
+            <div className="card-body">
             <label>
-                <input type="checkbox" checked={ingredient.complete} onChange={handleIngredientClicked}></input>
                 {" " +ingredient.name}
             </label>
             <label style={amountStyle}>

@@ -70,7 +70,7 @@ function FridgeList({ingredients, setIngredients, updatePerc}) {
 
     return(<>
     <h1 style={heading}>Ingredient List</h1>
-    <div style={{marginLeft: "10px"}}>
+    <div style={{marginLeft: "5%"}}>
       <div className="input-group mb-3">
         <input ref={ingredientNameRef}type="text" placeholder="Ingredient" className="form-control" style={{width:"50px"}}></input>
         <span style={spanStyle}>x</span>
@@ -80,8 +80,9 @@ function FridgeList({ingredients, setIngredients, updatePerc}) {
         <button onClick={handleAddIngredient} className="btn btn-dark">Add Ingredient</button>
         <button onClick={handleClear} className="btn btn-danger" style={{marginLeft: "10px"}}>Clear Ingredients</button>
       </div>
+    
+      <IngredientList ingredients = {ingredients} ingredientChecked={ingredientChecked}></IngredientList>
     </div>
-    <IngredientList ingredients = {ingredients} ingredientChecked={ingredientChecked}></IngredientList>
     </>
     )
   }
