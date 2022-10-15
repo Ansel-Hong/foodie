@@ -20,7 +20,7 @@ function Bookmark() {
     );
   }
   return <section>
-    <h1>Bookmark recipes</h1>
+    <h1 style={{margin: "5% 0 5% 5%"}} >Bookmark recipes</h1>
     {recipeList}
   </section>;
 }
