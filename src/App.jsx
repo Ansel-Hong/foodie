@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Route, Switch } from "react-router-dom";
+
 import './App.css'
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 import Layout from "./components/layout/Layout";
 import FridgeList from './components/pages/FridgeList';

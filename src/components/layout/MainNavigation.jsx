@@ -1,22 +1,20 @@
 import { Link } from "react-router-dom";
 
-import classes from './MainNavigation.module.css'
+import './MainNavigation.css'
+
 
 function MainNavigation() {
+  var percentage = 50;
+  const liStyle = {height : percentage + "%"};
+
   return (
-    <header className = {classes.header}>
-      {/* <div className = {classes.logo}>foodie</div> */}
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Video</Link>
-          </li>
-          <li>
-            <Link to="/fridge">Fridge</Link>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <div className="food-meter">
+        <div className="circle">
+          <h2 className="circle-text">{percentage}</h2>
+          <div className="box" style={liStyle}>
+        </div>
+      </div>
+    </div>
   );
 }
 
