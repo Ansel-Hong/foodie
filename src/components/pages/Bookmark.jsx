@@ -7,8 +7,6 @@ function Bookmark() {
   const recipeContext = useContext(RecipeList);
   const loadedRecipe = useContext(RecipeList).recipeList;
 
-  const curRecipe = recipeContext.curRecipe;
-
   function changeCurRecipe(newRecipe) {
     recipeContext.changeRecipe(newRecipe);
   }
@@ -24,7 +22,7 @@ function Bookmark() {
           </Link>
           <div  className="col-sm" style={{  width: "65%", marginLeft: '5%', paddingLeft: "5%"}}>
             <h2 style={{ fontSize: "125%" }}>{loadedRecipe[i].name}</h2> {/* //? name of recipe */}
-            <p style={{ fontSize: "80%" }}>{loadedRecipe[i].description}</p> {/* //? small description of the recipe */}
+            <p style={{ fontSize: "80%", fontFamily: 'Archivo', }} >{loadedRecipe[i].description}</p> {/* //? small description of the recipe */}
           </div>
       </div>
     );
