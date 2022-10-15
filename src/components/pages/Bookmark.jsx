@@ -14,10 +14,10 @@ function Bookmark() {
   let recipeList = [];
   for (let i = 0; i < loadedRecipe.length; i++) {
     recipeList.push(
-      <div className="d-flex card" key={i} style={{ margin: '5%', flexDirection: "row", alignItems: "center", padding: "1% 5%" }} >
+      <div className="d-flex card" key={i} style={{ margin: '2% 3%', flexDirection: "row", alignItems: "center", padding: "1% 5%" }} >
         <Link to="/" onClick={() => changeCurRecipe(i)}>
           <div className="col-sm" style={{ width: "30%", height: "100px",}}>
-            <img src={loadedRecipe[i].pic} style={{width: "100px", height: "100px",objectFit: "cover"}} /> {/* //? image of recipe */}
+            <img src={loadedRecipe[i].pic} style={{width: "100px", height: "100px",objectFit: "cover", borderRadius: "15px"}} /> {/* //? image of recipe */}
           </div>
           </Link>
           <div  className="col-sm" style={{  width: "65%", marginLeft: '5%', paddingLeft: "5%"}}>
