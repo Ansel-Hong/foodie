@@ -13,6 +13,8 @@ function Bookmark() {
 
   let recipeList = [];
   for (let i = 0; i < loadedRecipe.length; i++) {
+    console.log("bookmark", loadedRecipe[i].isBookmarked)
+    if(loadedRecipe[i].isBookmarked == true){
     recipeList.push(
       <div className="d-flex card" key={i} style={{ margin: '2% 3%', flexDirection: "row", alignItems: "center", padding: "1% 5%" }} >
         <Link to="/" onClick={() => changeCurRecipe(i)}>
@@ -25,7 +27,7 @@ function Bookmark() {
             <p style={{ fontSize: "80%", fontFamily: 'Archivo', }} >{loadedRecipe[i].description}</p> {/* //? small description of the recipe */}
           </div>
       </div>
-    );
+    );}
   }
   return <section>
     <h1 style={{margin: "5% 0 5% 5%"}} >Bookmark recipes</h1>

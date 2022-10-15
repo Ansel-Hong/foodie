@@ -5,6 +5,7 @@ const RecipeList = createContext({
   curRecipe: 0,
   changeRecipe: (recipe) => {},
   bookmarkRecipe: () => {},
+  unbookmarkRecipe: () => {}
 });
 
 export function RecipeListProvider(props) {
@@ -35,6 +36,33 @@ export function RecipeListProvider(props) {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ isBookmarked: true }),
+      }
+    )
+      .then((response) => {
+        console.log("response", response);
+        return response.json();
+      })
+      .then((data) => {
+        setIsLoading(false);
+      });
+  }
+
+  function unbookmarkCurRecipe() {
+    console.log(
+      "bookmarkCurRecipe",
+      "https://htv7-96f00-default-rtdb.firebaseio.com/recipe/" +
+        loadedRecipe[curNum].id +
+        ".json"
+    );
+
+    fetch(
+      "https://htv7-96f00-default-rtdb.firebaseio.com/recipe/" +
+        loadedRecipe[curNum].id +
+        ".json",
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ isBookmarked: false }),
       }
     )
       .then((response) => {
@@ -81,6 +109,7 @@ export function RecipeListProvider(props) {
     curRecipe: curNum,
     changeRecipe: changeCurRecipe,
     bookmarkRecipe: bookmarkCurRecipe,
+    unbookmarkRecipe: unbookmarkCurRecipe
   };
 
   return (
