@@ -11,17 +11,19 @@ export default function Item({item}) {
     }
 
     const divStyle = {
-        paddingTop: "10px",
-        paddingLeft: "10px"
+        marginTop: "10px",
+        width: "300px"
     }
     return (
-        <div key = {item.id} style = {divStyle}>
+        <div style = {divStyle} className="card">
+            <div className="card-body" >
             <label>
-                {item.name}
+                {" " +item.name}
             </label>
             <label style={amountStyle}>
-            x{item.amount}
+                x{" " + item.amount}
             </label>
+            </div>
         </div>
     )
 }

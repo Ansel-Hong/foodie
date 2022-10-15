@@ -1,9 +1,11 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from "react";
 
 const RecipeList = createContext({
   recipeList: [],
   curRecipe: 0,
-  changeRecipe: (recipe) => {} 
+  changeRecipe: (recipe) => {},
+  bookmarkRecipe: () => {},
+  unbookmarkRecipe: () => {}
 });
 
 export function RecipeListProvider(props) {
@@ -11,10 +13,65 @@ export function RecipeListProvider(props) {
   const [loadedRecipe, setLoadedRecipe] = useState([]);
   const [curNum, setCurNum] = useState(0);
 
-  function changeCurRecipe(newRecipe){
+  function changeCurRecipe(newRecipe) {
+    console.log(newRecipe);
     setCurNum((prevRecipeNum) => {
-        return (prevRecipeNum+1 >= loadedRecipe.length ? 0 : prevRecipeNum+1);
-    })
+      return newRecipe;
+    });
+  }
+
+  function bookmarkCurRecipe() {
+    console.log(
+      "bookmarkCurRecipe",
+      "https://htv7-96f00-default-rtdb.firebaseio.com/recipe/" +
+        loadedRecipe[curNum].id +
+        ".json"
+    );
+
+    fetch(
+      "https://htv7-96f00-default-rtdb.firebaseio.com/recipe/" +
+        loadedRecipe[curNum].id +
+        ".json",
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ isBookmarked: true }),
+      }
+    )
+      .then((response) => {
+        console.log("response", response);
+        return response.json();
+      })
+      .then((data) => {
+        setIsLoading(false);
+      });
+  }
+
+  function unbookmarkCurRecipe(i) {
+    console.log(
+      "bookmarkCurRecipe",
+      "https://htv7-96f00-default-rtdb.firebaseio.com/recipe/" +
+        loadedRecipe[i].id +
+        ".json"
+    );
+
+    fetch(
+      "https://htv7-96f00-default-rtdb.firebaseio.com/recipe/" +
+        loadedRecipe[i].id +
+        ".json",
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ isBookmarked: false }),
+      }
+    )
+      .then((response) => {
+        console.log("response", response);
+        return response.json();
+      })
+      .then((data) => {
+        setIsLoading(false);
+      });
   }
 
   useEffect(() => {
@@ -47,11 +104,13 @@ export function RecipeListProvider(props) {
     );
   }
 
-    const recipesList = {
-      recipeList: loadedRecipe,
-      curRecipe: curNum,
-      changeRecipe: changeCurRecipe
-    };
+  const recipesList = {
+    recipeList: loadedRecipe,
+    curRecipe: curNum,
+    changeRecipe: changeCurRecipe,
+    bookmarkRecipe: bookmarkCurRecipe,
+    unbookmarkRecipe: unbookmarkCurRecipe
+  };
 
   return (
     <RecipeList.Provider value={recipesList}>

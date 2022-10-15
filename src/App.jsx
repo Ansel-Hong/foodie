@@ -16,8 +16,8 @@ function App() {
   const [percentage, setPercentage] = useState(60)
   const [ingredients,setIngredients] = useState([])
 
-  const fridgePerc = (fPerc) => {
-    setPercentage(fPerc);
+  const updatePerc = () => {
+    setPercentage(percentage + 1);
   }
 
   return (
@@ -30,7 +30,7 @@ function App() {
             <VideoPlayer />
           </Route>
           <Route path="/fridge" exact={true}>
-            <FridgeList ingredients = {ingredients} setIngredients =  {setIngredients}s/>
+            <FridgeList ingredients = {ingredients} setIngredients={setIngredients} updatePerc={updatePerc}/>
           </Route>
           <Route path="/bookmark" exact={true}>
             <Bookmark />
