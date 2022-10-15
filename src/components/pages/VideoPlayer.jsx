@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import ReactPlayer from "react-player";
+import RecipeVid from "../recipe_vid/RecipeVid";
 
 function VideoPlayer() {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,14 +36,32 @@ function VideoPlayer() {
     );
   }
 
+  const recipesList = loadedRecipe.map( (recipe) => (
+    <RecipeVid 
+    id={recipe.id}
+    recipename={recipe.name}
+    vid={recipe.vid}
+    thumbnail={recipe.pic}
+    ingredients={recipe.ingredients}
+    username={recipe.userName}
+    userpf={recipe.userPf}/>
+    ) );
+
   return (
     <section>
       <h1>Video Here</h1>
-      {/* <ReactPlayer url="https://www.youtube.com/watch?v=ysz5S6PUM-U" /> */}
-      <div>{ loadedRecipe.map( (recipe) => (
-        <ReactPlayer url={recipe.vid} /> 
-        ) ) }</div>
-      {/* <ReactPlayer> {loadedRecipe}</ReactPlayer> */}
+      <div>{ recipesList[1]
+    //   loadedRecipe.map( (recipe) => (
+    //     <RecipeVid 
+    //     id={recipe.id}
+    //     recipename={recipe.name}
+    //     vid={recipe.vid}
+    //     thumbnail={recipe.pic}
+    //     ingredients={recipe.ingredients}
+    //     username={recipe.userName}
+    //     userpf={recipe.userPf}/>
+    //     ) )
+         }</div>
     </section>
   );
 }
