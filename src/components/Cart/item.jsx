@@ -16,7 +16,7 @@ export default function Item({item}) {
     }
     return (
         <div style = {divStyle} className="card">
-            <div className="input-group-text">
+            <div className="card-body" >
             <label>
                 {" " +item.name}
             </label>

@@ -1,6 +1,6 @@
 import React from "react";
-// import { useState, useEffect } from "react";
-import { useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useContext } from "react";
 import RecipeVid from "../recipe_vid/RecipeVid";
 import Add2Cart from "../recipe_vid/add2Cart";
 
@@ -32,8 +32,8 @@ function VideoPlayer() {
     <section  onScroll={handleScroll}>
       {/* <h1 style={{margin: "5% 0 5% 5%"}} >Video Here</h1> */}
       <div>{recipesList[curRecipe]}</div>
-      <button onClick={handleScroll}>Scroll next</button>
       <Add2Cart/>
+      <button onClick={handleScroll} className="btn btn-dark" >Next Vid</button>
     </section>
   );
 }
