@@ -1,36 +1,26 @@
-let numberOfBookmarks = 10; // TODO: this is a hardcoded value. Should fetched from database?
-const recipes = [];
-
-fetch("https://htv7-96f00-default-rtdb.firebaseio.com/recipe.json")
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-
-    for (const key in data) {
-      const recipe = {
-        id: key,
-        ...data[key],
-      };
-      recipes.push(recipe);
-    }
-  });
+import RecipeList from "../store/recipe-context"
+import { useContext } from "react";
 
 function Bookmark() {
+  const loadedRecipe = useContext(RecipeList).recipeList;
+
   let recipeList = [];
-  for (let i = 0; i < recipes.length; i++) {
+  for (let i = 0; i < loadedRecipe.length; i++) {
     recipeList.push(
-      <div>
-        <img src={recipes[i].pic} width='33%'/> {/* //? image of recipe */}
-        <div>
-          <h2>{recipes[i].name}</h2> {/* //? name of recipe */}
-          <p>{recipes[i].discription}</p> {/* //? small discription of the recipe */}
-        </div>
+      <div className="d-flex card" key={i} style={{ margin: '5%', flexDirection: "row", alignItems: "center", padding: "1% 5%" }}>
+          <div className="col-sm" style={{ width: "30%", height: "100px",}}>
+            <img src={loadedRecipe[i].pic} style={{width: "100px", height: "100px",objectFit: "cover"}} /> {/* //? image of recipe */}
+          </div>
+              
+          <div  className="col-sm" style={{  width: "65%", marginLeft: '5%', paddingLeft: "5%"}}>
+            <h2 style={{ fontSize: "125%" }}>{loadedRecipe[i].name}</h2> {/* //? name of recipe */}
+            <p style={{ fontSize: "80%" }}>{loadedRecipe[i].description}</p> {/* //? small description of the recipe */}
+          </div>
       </div>
     );
   }
   return <section>
-    <h1>Bookmark recipes</h1>
+    <h1 style={{margin: "5% 0 5% 5%"}} >Bookmark recipes</h1>
     {recipeList}
   </section>;
 }

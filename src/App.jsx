@@ -10,18 +10,27 @@ import VideoPlayer from './components/pages/VideoPlayer';
 import Bookmark from './components/pages/Bookmark';
 import Cart from './components/pages/Cart';
 
+import FoodMeter from './components/layout/FoodMeter';
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [percentage, setPercentage] = useState(60)
+  const [ingredients,setIngredients] = useState([])
+
+  const fridgePerc = (fPerc) => {
+    setPercentage(fPerc);
+  }
 
   return (
     <div className="App">
+      <FoodMeter percentage={percentage} />
+
       <Layout>
         <Switch>
           <Route path="/" exact={true}>
             <VideoPlayer />
           </Route>
           <Route path="/fridge" exact={true}>
-            <FridgeList />
+            <FridgeList ingredients = {ingredients} setIngredients =  {setIngredients}s/>
           </Route>
           <Route path="/bookmark" exact={true}>
             <Bookmark />

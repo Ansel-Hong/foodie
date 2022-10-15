@@ -1,10 +1,10 @@
+import { useState } from 'react'
 import { Link } from "react-router-dom";
 
-import './MainNavigation.css'
+import './Navigation.css'
 
 
-function MainNavigation() {
-  var percentage = 50;
+function FoodMeter({percentage}) {
   const liStyle = {height : percentage + "%"};
 
   return (
@@ -20,4 +20,4 @@ function MainNavigation() {
   );
 }
 
-export default MainNavigation;
+export default FoodMeter;
