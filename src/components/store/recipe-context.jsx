@@ -4,6 +4,8 @@ const RecipeList = createContext({
   recipeList: [],
   ingredientsList: [],
   curRecipe: 0,
+  totalIngredients: 0.0,
+  wastedIngredients: 0.0,
   changeRecipe: (recipe) => {},
   bookmarkRecipe: () => {},
   unbookmarkRecipe: () => {},
@@ -14,6 +16,8 @@ export function RecipeListProvider(props) {
   const [loadedRecipe, setLoadedRecipe] = useState([]);
   const [loadedIngredients, setLoadedIngredients] = useState([]);
   const [curNum, setCurNum] = useState(0);
+  const [wasted, setWasted] = useState(0);
+  const [total, setTotal] = useState(0);
 
   function changeCurRecipe(newRecipe) {
     console.log(newRecipe);
@@ -102,6 +106,9 @@ export function RecipeListProvider(props) {
         var curId = 0;
         var flag = true;
 
+        var countWasted = 0;
+        var countTotal = 0;
+
         for (var i = 0; i < recipes.length; i++) {
           if (recipes[i].isBookmarked == true) {
             var ing = recipes[i].ingredients;
@@ -157,6 +164,8 @@ export function RecipeListProvider(props) {
     recipeList: loadedRecipe,
     ingredientsList: loadedIngredients,
     curRecipe: curNum,
+    totalIngredients: total,
+    wastedIngredients: wasted,
     changeRecipe: changeCurRecipe,
     bookmarkRecipe: bookmarkCurRecipe,
     unbookmarkRecipe: unbookmarkCurRecipe,
