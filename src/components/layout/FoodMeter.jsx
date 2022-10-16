@@ -12,9 +12,9 @@ function FoodMeter({percentage}) {
   const wasted = useContext(RecipeList).wastedIngredients;
   const total = useContext(RecipeList).totalIngredients;
 
-  var percentageupdated = Math.round(100* ((total-wasted)/total))/100;
+  var percentageupdated = Math.round(100* ((total-wasted)/total));
   useEffect(() => {
-    percentageupdated =  Math.round(100* ((total-wasted)/total))/100;
+    percentageupdated =  Math.round(100* ((total-wasted)/total));
     console.log("percentage waste", percentageupdated);
   }, [wasted, total]);
   
