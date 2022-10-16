@@ -116,7 +116,7 @@ export function RecipeListProvider(props) {
               var ingLoc = 0;
               var fixIngLoc = 0;
               for (const ingN in ingredients) {
-                console.log("abc", ingredients[ingN].name);
+                // console.log("abc", ingredients[ingN].name);
                 if (x == ingredients[ingN].name) {
                   flag = false;
                   fixIngLoc = ingN;
@@ -129,6 +129,7 @@ export function RecipeListProvider(props) {
                   name: x,
                   amount: ing[x],
                 });
+                countTotal += 
               } else {
                 ingredients[fixIngLoc] = {
                   id: ingredients[fixIngLoc].id,
