@@ -26,8 +26,9 @@ function App() {
 
       <Layout>
         <Switch>
+
           <Route path="/" exact={true}>
-            <VideoPlayer />
+            <VideoPlayer/>
           </Route>
           <Route path="/fridge" exact={true}>
             <FridgeList ingredients = {ingredients} setIngredients={setIngredients} updatePerc={updatePerc}/>
@@ -38,6 +39,7 @@ function App() {
           <Route path="/cart" exact={true}>
             <Cart />
           </Route>
+          
         </Switch>
       </Layout>
     </div>

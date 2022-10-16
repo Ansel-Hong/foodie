@@ -106,8 +106,8 @@ export function RecipeListProvider(props) {
         var curId = 0;
         var flag = true;
 
-        var countWasted = 0;
-        var countTotal = 0;
+        var countWasted = 0.0;
+        var countTotal = 0.0;
 
         for (var i = 0; i < recipes.length; i++) {
           if (recipes[i].isBookmarked == true) {
@@ -129,7 +129,6 @@ export function RecipeListProvider(props) {
                   name: x,
                   amount: ing[x],
                 });
-                countTotal += ing[x];
               } else {
                 ingredients[fixIngLoc] = {
                   id: ingredients[fixIngLoc].id,
@@ -137,15 +136,21 @@ export function RecipeListProvider(props) {
                   amount: ing[x] + ingredients[fixIngLoc].amount,
                 };
               }
+              countTotal += Math.floor(ing[x]) + 1;
+              countWasted += (Math.floor(ing[x]) + 1 - ing[x]);
               flag = true;
               curId++;
             }
           }
         }
 
+        console.log("ABBA",countWasted, countTotal);
+
         setIsLoading(false);
         setLoadedRecipe(recipes);
         setLoadedIngredients(ingredients);
+        setWasted(countWasted);
+        setTotal(countTotal);
       });
   }
 
@@ -160,6 +165,8 @@ export function RecipeListProvider(props) {
       </section>
     );
   }
+
+  console.log("ACCA",wasted, total);
 
   const recipesList = {
     recipeList: loadedRecipe,
