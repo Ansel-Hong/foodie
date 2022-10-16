@@ -1,31 +1,27 @@
-.player-wrapper {
-  position: relative;
-  width: auto; 
-  height: 70vh;
+.vid-page {
+  background-color: black;
+  height: 100vh;
   z-index: 0!important;
 }
-.react-player {
+
+.player-wrapper {
+  padding-top: 50%;
   position: relative;
+  width: auto; 
+  height: 40vh;
+  z-index: 0!important;
+}
+
+.react-player {
+  position: absolute;
   width: 100% !important; 
   height: 100% !important; 
   z-index: 0!important;
 }
 
-.ytp-player-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0!important;
-}
-.react-player > div {
-  z-index: 0!important;
-  position: absolute;
-}
-
-
 .add2Cart{
   position: absolute;
-  bottom: 100px;
+  bottom: 90px;
   right: 10px;
   z-index: 1000;
 }

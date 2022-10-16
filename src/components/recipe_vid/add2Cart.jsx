@@ -17,7 +17,7 @@ function Add2Cart({}) {
   return (
     <div className="add2Cart" data-layer="4">
         <button className="circle" onClick={handleClick}>
-          <h2 className="circle-text">+</h2>
+          <h2 className="circle-text" style={{fontSize:"55px"}}>+</h2>
         </button>
     </div>
   );

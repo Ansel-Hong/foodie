@@ -69,7 +69,7 @@ function FridgeList({ingredients, setIngredients, updatePerc}) {
   }
 
     return(<>
-    <h1 style={heading}>Ingredient List</h1>
+    <h1 style={heading}>Basket</h1>
     <div style={{marginLeft: "5%"}}>
       <div className="input-group mb-3">
         <input ref={ingredientNameRef}type="text" placeholder="Ingredient" className="form-control" style={{width:"50px"}}></input>
