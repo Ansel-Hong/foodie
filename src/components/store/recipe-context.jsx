@@ -2,15 +2,17 @@ import { createContext, useState, useEffect } from "react";
 
 const RecipeList = createContext({
   recipeList: [],
+  ingredientsList: [],
   curRecipe: 0,
   changeRecipe: (recipe) => {},
   bookmarkRecipe: () => {},
-  unbookmarkRecipe: () => {}
+  unbookmarkRecipe: () => {},
 });
 
 export function RecipeListProvider(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [loadedRecipe, setLoadedRecipe] = useState([]);
+  const [loadedIngredients, setLoadedIngredients] = useState([]);
   const [curNum, setCurNum] = useState(0);
 
   function changeCurRecipe(newRecipe) {
@@ -46,7 +48,6 @@ export function RecipeListProvider(props) {
       .then((data) => {
         setIsLoading(false);
         getD();
-
       });
   }
 
@@ -80,8 +81,7 @@ export function RecipeListProvider(props) {
       });
   }
 
-
-  function getD(){
+  function getD() {
     setIsLoading(true);
     fetch("https://htv7-96f00-default-rtdb.firebaseio.com/recipe.json")
       .then((response) => {
@@ -89,6 +89,7 @@ export function RecipeListProvider(props) {
       })
       .then((data) => {
         const recipes = [];
+        const ingredients = [];
 
         for (const key in data) {
           const recipe = {
@@ -98,8 +99,45 @@ export function RecipeListProvider(props) {
           recipes.push(recipe);
         }
 
+        var curId = 0;
+        var flag = true;
+
+        for (var i = 0; i < recipes.length; i++) {
+          if (recipes[i].isBookmarked == true) {
+            var ing = recipes[i].ingredients;
+            for (var x in ing) {
+              var ingLoc = 0;
+              var fixIngLoc = 0;
+              for (const ingN in ingredients) {
+                console.log("abc", ingredients[ingN].name);
+                if (x == ingredients[ingN].name) {
+                  flag = false;
+                  fixIngLoc = ingN;
+                }
+                ingLoc++;
+              }
+              if (flag) {
+                ingredients.push({
+                  id: curId,
+                  name: x,
+                  amount: ing[x],
+                });
+              } else {
+                ingredients[fixIngLoc] = {
+                  id: ingredients[fixIngLoc].id,
+                  name: x,
+                  amount: ing[x] + ingredients[fixIngLoc].amount,
+                };
+              }
+              flag = true;
+              curId++;
+            }
+          }
+        }
+
         setIsLoading(false);
         setLoadedRecipe(recipes);
+        setLoadedIngredients(ingredients);
       });
   }
 
@@ -117,10 +155,11 @@ export function RecipeListProvider(props) {
 
   const recipesList = {
     recipeList: loadedRecipe,
+    ingredientsList: loadedIngredients,
     curRecipe: curNum,
     changeRecipe: changeCurRecipe,
     bookmarkRecipe: bookmarkCurRecipe,
-    unbookmarkRecipe: unbookmarkCurRecipe
+    unbookmarkRecipe: unbookmarkCurRecipe,
   };
 
   return (
