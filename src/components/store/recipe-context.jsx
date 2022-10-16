@@ -27,6 +27,7 @@ export function RecipeListProvider(props) {
         loadedRecipe[curNum].id +
         ".json"
     );
+    setIsLoading(true);
 
     fetch(
       "https://htv7-96f00-default-rtdb.firebaseio.com/recipe/" +
@@ -44,6 +45,8 @@ export function RecipeListProvider(props) {
       })
       .then((data) => {
         setIsLoading(false);
+        getD();
+
       });
   }
 
@@ -54,6 +57,8 @@ export function RecipeListProvider(props) {
         loadedRecipe[i].id +
         ".json"
     );
+
+    setIsLoading(true);
 
     fetch(
       "https://htv7-96f00-default-rtdb.firebaseio.com/recipe/" +
@@ -71,10 +76,12 @@ export function RecipeListProvider(props) {
       })
       .then((data) => {
         setIsLoading(false);
+        getD();
       });
   }
 
-  useEffect(() => {
+
+  function getD(){
     setIsLoading(true);
     fetch("https://htv7-96f00-default-rtdb.firebaseio.com/recipe.json")
       .then((response) => {
@@ -94,6 +101,10 @@ export function RecipeListProvider(props) {
         setIsLoading(false);
         setLoadedRecipe(recipes);
       });
+  }
+
+  useEffect(() => {
+    getD();
   }, []);
 
   if (isLoading) {
