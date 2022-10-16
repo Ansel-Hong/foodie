@@ -28,7 +28,7 @@ function Bookmark() {
             <h2 style={{ fontSize: "125%" }}>{loadedRecipe[i].name}</h2> {/* //? name of recipe */}
             <p style={{ fontSize: "80%", fontFamily: 'Archivo', }} >{loadedRecipe[i].description}</p> {/* //? small description of the recipe */}
             </div>
-            <button onClick={() => delBookmark(i)} className="btn btn-danger"><i class="bi bi-trash"></i></button>
+            <button onClick={() => delBookmark(i)} className="btn btn-danger"><i className="bi bi-trash"></i></button>
         </div>);
     }
   }
