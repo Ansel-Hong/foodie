@@ -18,7 +18,7 @@ function Bookmark() {
 
   for (let i = 0; i < loadedRecipe.length; i++) {
     if(loadedRecipe[i].isBookmarked == true) {
-        recipeList.push (<div className="d-flex card" key={i} style={{ margin: '5%', flexDirection: "row", alignItems: "center", padding: "1% 5%" }} >
+        recipeList.push (<div className="d-flex card" key={i} style={{ margin: '5%', flexDirection: "row", alignItems: "center", padding: "1% 3%" }} >
             <Link to="/" onClick={() => changeCurRecipe(i)}>
             <div className="col-sm" style={{ width: "30%", height: "100px", }}>
                 <img src={loadedRecipe[i].pic} style={{ width: "100px", height: "100px", objectFit: "cover" }} /> {/* //? image of recipe */}
@@ -28,7 +28,7 @@ function Bookmark() {
             <h2 style={{ fontSize: "125%" }}>{loadedRecipe[i].name}</h2> {/* //? name of recipe */}
             <p style={{ fontSize: "80%", fontFamily: 'Archivo', }} >{loadedRecipe[i].description}</p> {/* //? small description of the recipe */}
             </div>
-            <button onClick={() => delBookmark(i)} className="btn btn-danger">Remove bookmark</button>
+            <button onClick={() => delBookmark(i)} className="btn btn-danger"><i class="bi bi-trash"></i></button>
         </div>);
     }
   }
