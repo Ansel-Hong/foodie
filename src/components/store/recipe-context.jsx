@@ -129,7 +129,7 @@ export function RecipeListProvider(props) {
                   name: x,
                   amount: ing[x],
                 });
-                countTotal += 
+                countTotal += ing[x];
               } else {
                 ingredients[fixIngLoc] = {
                   id: ingredients[fixIngLoc].id,
